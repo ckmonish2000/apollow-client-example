@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       {data?JSON.stringify(data):"loading"}
-   <Button onClick={()=>{Data({variables:{uname:"jk",complete:false,task:"try32"}})}}>test</Button>
+   <Button onClick={()=>{Data({variables:{uname:"jk",complete:false,task:"shiva song"}})}}>test</Button>
     </div>
   );
 }
