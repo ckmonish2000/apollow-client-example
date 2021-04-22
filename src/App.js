@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import {Button} from "antd"
+import {getPermissions}from "./services/queries"
+import {useQuery,useMutation} from "@apollo/client"
+import {test} from "./services/mutations"
+
 
 function App() {
+  let {loading, error, data,refetch} = useQuery(getPermissions)
+  const [Data,{data: dta,error:er}] = useMutation(test,{refetchQueries:res=>[{query:getPermissions}]});
+  console.log(dta,Data,er);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {data?JSON.stringify(data):"loading"}
+   <Button onClick={()=>{Data({variables:{uname:"jk",complete:false,task:"try32"}})}}>test</Button>
     </div>
   );
 }
